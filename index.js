@@ -6,8 +6,7 @@ require("dotenv/config");
 
 const corsOptions = {
   origin: "*",
-  optionsSuccessStatus: 200,
-  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 };
 
 app.use(cors(corsOptions));
@@ -20,9 +19,13 @@ const loginRegister = require("./routes/auth");
 app.use("/api", apiRoute);
 app.use("/u", loginRegister);
 
+app.get("/", (_, res) => {
+  res.send("AXA Technical Test");
+});
+
 /***************** User *****************/
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log("running on 3001 port");
 });
 
